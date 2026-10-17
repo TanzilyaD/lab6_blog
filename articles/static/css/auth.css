@@ -1,0 +1,80 @@
+body {
+    background: #1abc9c;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px 0 40px;
+}
+
+.form-page .content {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.form-page .header {
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form-page .header img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+}
+
+.form-page .all-posts {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.form-page h1 {
+    font-size: 36px;
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+.form-page form input[type="text"],
+.form-page form input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+.form-page form input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 4px;
+    background: #16806c;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.form-page form input[type="submit"]:hover {
+    background: #11695a;
+}
+
+.form-page .errors {
+    margin-top: 16px;
+    padding: 10px 14px;
+    background: #c0392b;
+    border-radius: 4px;
+    text-align: center;
+}

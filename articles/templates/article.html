@@ -9,6 +9,8 @@
 <body class="article">
     <div class="content">
         <div class="header">
+            <a class="all-posts" href="{% url 'register' %}" style="float: left; margin-right: 20px;">Регистрация</a>
+            <a class="all-posts" href="{% url 'login' %}" style="float: left;">Вход</a>
             <a class="all-posts" href="{% url 'archive' %}">Все статьи</a>
             <img src="{% static 'img/logo.png' %}" alt="Django public blog">
         </div>

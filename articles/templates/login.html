@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Вход в систему</title>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body class="form-page">
+    <div class="content">
+        <div class="header">
+            <a class="all-posts" href="{% url 'archive' %}">На главную</a>
+            <img src="{% static 'img/logo.png' %}" alt="Django public blog">
+        </div>
+        <h1>Вход в систему</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Логин" value="{{ request.POST.username }}">
+            <input type="password" name="password" placeholder="Пароль">
+            <input type="submit" value="Войти">
+        </form>
+        {% if error %}
+            <div class="errors">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

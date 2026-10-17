@@ -1,6 +1,8 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
 from .models import Article
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 
 def archive(request):
@@ -39,3 +41,41 @@ def create_post(request):
             return render(request, 'create_post.html', {})
     else:
         raise Http404
+
+
+def register(request):
+    if request.method == "POST":
+        username = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "").strip()
+
+        if not username or not password:
+            return render(request, 'register.html', {'error': 'Заполните все поля'})
+
+        if User.objects.filter(username=username).exists():
+            return render(request, 'register.html', {'error': 'Пользователь с таким логином уже существует'})
+
+        User.objects.create_user(username=username, password=password)
+        return redirect('login')
+    return render(request, 'register.html')
+
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "").strip()
+
+        if not username or not password:
+            return render(request, 'login.html', {'error': 'Заполните все поля'})
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('archive')
+        else:
+            return render(request, 'login.html', {'error': 'Неверный логин или пароль'})
+    return render(request, 'login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('archive')

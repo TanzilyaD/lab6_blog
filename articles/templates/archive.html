@@ -9,6 +9,13 @@
 <body class="archive">
     <div class="header">
         <img src="{% static 'img/logo.png' %}" alt="Django public blog">
+        {% if user.is_authenticated %}
+            <a class="all-posts" href="{% url 'create_post' %}" style="margin-left: 20px;">Добавить статью</a>
+            <a class="all-posts" href="{% url 'logout' %}" style="margin-left: 10px;">Выйти ({{ user.username }})</a>
+        {% else %}
+            <a class="all-posts" href="{% url 'register' %}" style="margin-left: 20px;">Регистрация</a>
+            <a class="all-posts" href="{% url 'login' %}" style="margin-left: 10px;">Вход</a>
+        {% endif %}
     </div>
     <div class="archive">
         {% for post in posts %}
